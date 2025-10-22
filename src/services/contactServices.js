@@ -1,30 +1,27 @@
 import axios from "axios";
 
-export class contactService {
-  static SERVER_URL = "http://localhost:7000";
+const BASE_URL = import.meta.env.VITE_API_URL || "http://localhost:7000";
 
+console.log("API Base URL:", BASE_URL);
+
+export class contactService {
   static getAllContacts() {
-    const contactsURL = `${this.SERVER_URL}/contacts`;
-    return axios.get(contactsURL);
+    return axios.get(`${BASE_URL}/contacts`);
   }
 
   static createContact(contactInfo) {
-    const contactsURL = `${this.SERVER_URL}/contacts`;
-    return axios.post(contactsURL, contactInfo);
+    return axios.post(`${BASE_URL}/contacts`, contactInfo);
   }
 
   static getContact(contactId) {
-    const contactsURL = `${this.SERVER_URL}/contacts/${contactId}`;
-    return axios.get(contactsURL);
+    return axios.get(`${BASE_URL}/contacts/${contactId}`);
   }
 
-  static updateContact(contactInfo, contactId){
-    const contactsURL = `${this.SERVER_URL}/contacts/${contactId}`
-    return axios.put(contactsURL,contactInfo)
+  static updateContact(contactInfo, contactId) {
+    return axios.put(`${BASE_URL}/contacts/${contactId}`, contactInfo);
   }
 
-  static deleteContact(contactId){
-    const contactsURL = `${this.SERVER_URL}/contacts/${contactId}`
-    return axios.delete(contactsURL)
+  static deleteContact(contactId) {
+    return axios.delete(`${BASE_URL}/contacts/${contactId}`);
   }
 }
