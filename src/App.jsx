@@ -1,0 +1,10 @@
+// import ContactList from "./components/contact-list/ContactList";
+// import CreateContact from "./components/create-contact/CreateContact";
+import { RouterProvider } from "react-router-dom";
+import { router } from "./routes/router.jsx";
+
+function App() {
+  return <RouterProvider router={router} />;
+}
+
+export default App;
